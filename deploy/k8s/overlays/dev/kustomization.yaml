@@ -21,6 +21,6 @@ configMapGenerator:
 
 images:
   - name: ghcr.io/dreyssechris/finance-tracker-api
-    newTag: sha-0e61bda2b8620ee9733183726ff8d117cb05e10c
+    newTag: sha-70c8f82a1bd97e0a13f8b14b2933b9a6d917264e
   - name: ghcr.io/dreyssechris/finance-tracker-web
-    newTag: sha-0e61bda2b8620ee9733183726ff8d117cb05e10c
+    newTag: sha-70c8f82a1bd97e0a13f8b14b2933b9a6d917264e
