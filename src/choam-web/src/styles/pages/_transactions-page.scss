@@ -2,18 +2,19 @@
 $page-max-width: 1600px;
 
 // Spacing
-$header-margin-bottom: 40px;
-$kpi-gap: 24px;
-$kpi-margin-bottom: 48px;
-$card-padding: 24px;
-$btn-padding: 10px 24px;
+$header-margin-bottom: 24px;
+$kpi-gap: 16px;
+$kpi-margin-bottom: 24px;
+$card-padding: 16px;
+$btn-padding: 8px 20px;
 $btn-gap: 8px;
 $actions-gap: 12px;
 
 // Typography
-$title-size: 3rem;
-$title-size-mobile: 2rem;
-$kpi-value-size: 1.875rem;
+$title-size: 2.5rem;
+$title-size-mobile: 1.75rem;
+$kpi-value-size: 1.5rem;
+$kpi-value-size-mobile: 1.25rem;
 $label-size: 10px;
 $label-tracking: 0.2em;
 $subtitle-tracking: 0.3em;
@@ -31,13 +32,15 @@ $grain-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http
   justify-content: space-between;
   align-items: center;
   margin-bottom: $header-margin-bottom;
+  flex-wrap: wrap;
+  gap: 16px;
 
   &__subtitle {
     color: var(--sand-gold);
     font-size: $label-size;
     text-transform: uppercase;
     letter-spacing: $subtitle-tracking;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     opacity: 0.7;
   }
 
@@ -54,6 +57,7 @@ $grain-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http
   &__actions {
     display: flex;
     gap: $actions-gap;
+    flex-wrap: wrap;
   }
 }
 
@@ -63,13 +67,14 @@ $grain-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: $btn-padding;
-  font-size: 0.875rem;
+  font-size: 0.813rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   gap: $btn-gap;
+  white-space: nowrap;
 
   &:hover {
     background: white;
@@ -84,7 +89,7 @@ $grain-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http
   color: black;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: $btn-padding;
-  font-size: 0.875rem;
+  font-size: 0.813rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s;
@@ -92,6 +97,7 @@ $grain-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http
   align-items: center;
   gap: $btn-gap;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
 
   &:hover {
     filter: brightness(1.1);
@@ -113,7 +119,7 @@ $grain-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 16px;
+  gap: 8px;
   transition: border-color 0.2s;
 
   &:hover {
@@ -203,33 +209,41 @@ $grain-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http
   }
 }
 
-// Responsive
+// Responsive — medium screens
 @media (max-width: 1024px) {
+  .ledger-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .kpi-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+// Responsive — small screens
 @media (max-width: 600px) {
   .ledger-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-
     &__title {
       font-size: $title-size-mobile;
     }
 
     &__actions {
-      width: 100%;
+      justify-content: center;
     }
   }
 
   .kpi-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
   .kpi-card {
-    min-height: auto;
+    padding: 12px;
+
+    &__value {
+      font-size: $kpi-value-size-mobile;
+    }
   }
 }

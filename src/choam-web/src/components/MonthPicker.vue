@@ -20,8 +20,6 @@
             class="month-picker__chevron"
           />
         </div>
-        <div class="month-picker__underline" />
-
         <q-menu
           anchor="bottom middle"
           self="top middle"

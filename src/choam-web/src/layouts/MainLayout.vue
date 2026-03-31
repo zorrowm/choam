@@ -1,23 +1,29 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import '../styles/layouts/_main-layout.scss'
 
 const router = useRouter()
+const route = useRoute()
+
+const avatars = ['/avatars/cloak.png', '/avatars/fremen-mask.png', '/avatars/tleilaxu.png']
+
+function getRandomAvatar(): string {
+  const stored = sessionStorage.getItem('choam-avatar')
+  if (stored) return stored
+  const pick = avatars[Math.floor(Math.random() * avatars.length)]
+  sessionStorage.setItem('choam-avatar', pick)
+  return pick
+}
+
+const userAvatar = ref(getRandomAvatar())
 
 const navItems = [
-  { label: 'Ledger', route: '/' },
-  { label: 'Chat', route: null },
-  { label: 'Analytics', route: null },
-  { label: 'Settings', route: null },
+  { label: 'Ledger', icon: 'sym_o_receipt_long', route: '/' },
+  { label: 'Chat', icon: 'sym_o_chat', route: '/chat' },
+  { label: 'Analytics', icon: 'sym_o_bar_chart', route: '/analytics' },
+  { label: 'Settings', icon: 'sym_o_settings', route: '/settings' },
 ]
-
-const activeNav = ref('Ledger')
-
-function onNav(item: { label: string; route: string | null }) {
-  activeNav.value = item.label
-  if (item.route) router.push(item.route)
-}
 </script>
 
 <template>
@@ -25,14 +31,18 @@ function onNav(item: { label: string; route: string | null }) {
     <q-header class="glass-nav">
       <div class="nav-inner">
         <div class="nav-left">
-          <span class="nav-logo font-headline">CHOAM</span>
+          <a
+            class="nav-logo font-headline"
+            href="#"
+            @click.prevent="router.push('/')"
+          >CHOAM</a>
           <nav class="nav-links">
             <a
-              v-for="item in navItems"
+              v-for="item in navItems.slice(1)"
               :key="item.label"
-              :class="['nav-link font-headline', { 'nav-link--active': activeNav === item.label }]"
+              :class="['nav-link font-headline', { 'nav-link--active': route.path === item.route }]"
               href="#"
-              @click.prevent="onNav(item)"
+              @click.prevent="router.push(item.route)"
             >
               {{ item.label }}
             </a>
@@ -40,9 +50,10 @@ function onNav(item: { label: string; route: string | null }) {
         </div>
         <div class="nav-right">
           <div class="nav-user">
-            <q-icon 
-              name="sym_o_account_circle"
-              size="20px"
+            <img
+              :src="userAvatar"
+              alt="Avatar"
+              class="nav-user__avatar"
             />
             <span class="nav-user__name">Administrator</span>
           </div>
@@ -53,5 +64,18 @@ function onNav(item: { label: string; route: string | null }) {
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <nav class="bottom-nav">
+      <a
+        v-for="item in navItems"
+        :key="item.label"
+        :class="['bottom-nav__item', { 'bottom-nav__item--active': route.path === item.route }]"
+        href="#"
+        @click.prevent="router.push(item.route)"
+      >
+        <q-icon :name="item.icon" size="20px" />
+        <span class="bottom-nav__label">{{ item.label }}</span>
+      </a>
+    </nav>
   </q-layout>
 </template>

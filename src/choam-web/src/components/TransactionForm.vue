@@ -155,9 +155,9 @@ const showCancel = !!props.defaultValues
           v-model="categoryId"
           :disable="submitting"
         />
-        <div class="transaction-form__category-row">
-          <CategoryCreate @created="(id: number) => (categoryId = id)" />
-        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <CategoryCreate @created="(id: number) => (categoryId = id)" />
       </div>
       <div class="col-12">
         <q-input
