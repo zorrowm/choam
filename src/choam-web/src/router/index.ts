@@ -10,8 +10,23 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'transactions',
+          name: 'ledger',
           component: () => import('../pages/TransactionsPage.vue'),
+        },
+        {
+          path: 'chat',
+          name: 'chat',
+          component: () => import('../pages/ChatPage.vue'),
+        },
+        {
+          path: 'analytics',
+          name: 'analytics',
+          component: () => import('../pages/AnalyticsPage.vue'),
+        },
+        {
+          path: 'settings',
+          name: 'settings',
+          component: () => import('../pages/SettingsPage.vue'),
         },
       ],
     },

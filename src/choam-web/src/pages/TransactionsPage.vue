@@ -32,7 +32,7 @@
           <div class="ledger-header__actions">
             <button class="btn-ghost">
               <q-icon name="sym_o_file_download" size="18px" />
-              Export Statement
+              Export CSV
             </button>
             <button
               class="btn-primary"

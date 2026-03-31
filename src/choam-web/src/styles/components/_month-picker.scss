@@ -1,5 +1,5 @@
-$picker-padding-x: 32px;
-$picker-padding-y: 12px;
+$picker-padding-x: 16px;
+$picker-padding-y: 6px;
 
 .month-picker {
   display: flex;
@@ -9,7 +9,7 @@ $picker-padding-y: 12px;
   &__container {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
     background: var(--surface-container-low);
     padding: $picker-padding-y $picker-padding-x;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -46,7 +46,7 @@ $picker-padding-y: 12px;
   }
 
   &__text {
-    font-size: 1.25rem;
+    font-size: 0.875rem;
     font-weight: 700;
     color: white;
     letter-spacing: 0.1em;
@@ -55,21 +55,8 @@ $picker-padding-y: 12px;
 
   &__chevron {
     color: var(--sand-gold);
-    font-size: 18px;
+    font-size: 14px;
     transition: transform 0.3s;
-  }
-
-  &__underline {
-    height: 2px;
-    width: 32px;
-    margin-top: 4px;
-    opacity: 0.5;
-    background: var(--sand-gold);
-    transition: width 0.3s;
-  }
-
-  &__display:hover &__underline {
-    width: 100%;
   }
 
   &__display:hover &__chevron {

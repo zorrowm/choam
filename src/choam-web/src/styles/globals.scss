@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
 // Domain-specific semantic colors
 :root {
@@ -8,10 +8,10 @@
   --bordercolor: #141414;
   --card-bg: #000000;
 
-  // CHOAM design tokens
-  --sand-gold: #F4CF8B;
+  // CHOAM design tokens (derived from crest icon)
+  --sand-gold: #D4A017;
   --muted-red: #E07A5F;
-  --spice-red: #7b3224;
+  --spice-red: #8B1A1A;
   --moss-green: #839067;
   --prof-teal: #3D85C6;
   --surface: #000000;
@@ -26,17 +26,17 @@
 
 // Typography
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   background-color: #000000;
   color: var(--on-surface);
 }
 
 .font-headline {
-  font-family: 'Noto Serif', serif;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .font-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 10px;
@@ -55,7 +55,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.03;
+  opacity: 0.02;
   pointer-events: none;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -69,6 +69,27 @@ body::before {
 .q-table,
 .q-menu {
   border-radius: 0 !important;
+}
+
+// Context menu styling
+.q-menu {
+  background: var(--surface-container-high) !important;
+  border: 1px solid var(--outline-variant);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  .q-item {
+    color: var(--on-surface);
+    min-height: 36px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .q-item__section--avatar {
+    min-width: 32px;
+    padding-right: 8px;
+  }
 }
 
 // Override Quasar dark backgrounds
