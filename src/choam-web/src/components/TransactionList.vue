@@ -15,7 +15,7 @@ const emit = defineEmits<{
   delete: [id: number]
 }>()
 
-const { list: categoryList, selectById } = useCategories()
+const { list: categoryList } = useCategories()
 
 // Responsive: switch to grid (card) mode on small screens
 const isGridMode = ref(window.innerWidth < 600)
